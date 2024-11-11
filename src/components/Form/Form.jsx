@@ -28,3 +28,11 @@ const Form = ({ addTask }) => {
 };
 
 export default Form;
+
+
+local   staging area   github repo 
+
+
+git commit -m"fix: added Button component  " 
+
+git log 
