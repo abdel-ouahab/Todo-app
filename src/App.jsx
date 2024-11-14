@@ -9,7 +9,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([])
   const [inputValue, setInputValue] = useState('')
-  
+
 
   const handleChange = (e) => {
     setInputValue(e.target.value)
@@ -70,8 +70,8 @@ function App() {
         <Title>Get Things Done!</Title>
 
         <Form addTask={addTask} />
-        
-        <SearchForm handleChange={handleChange}/>
+
+        <SearchForm handleChange={handleChange} />
 
         {filteredTasks.map((task) =>
           task.isEditing ? (
