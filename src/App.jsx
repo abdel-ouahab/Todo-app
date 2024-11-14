@@ -1,11 +1,31 @@
 import "./App.css";
-import { useState } from "react";
-import { Container, Title, Form, Task, EditForm } from "./components/index";
+import { useState, useEffect } from "react";
+import { Container, Title, Form, Task, EditForm, Button, SearchForm } from "./components/index";
+import { FaSearch } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 uuidv4();
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([])
+  const [inputValue, setInputValue] = useState('')
+  
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value)
+  }
+
+  useEffect(() => {
+    setFilteredTasks(todos)
+  }, [todos])
+
+  useEffect(() => {
+    const filter = todos.filter(
+      task => task.description.toLowerCase().includes(inputValue)
+    )
+    setFilteredTasks(filter)
+  }, [inputValue])
+
   const addTask = (todo) => {
     setTodos([
       ...todos,
@@ -48,16 +68,22 @@ function App() {
     <>
       <Container>
         <Title>Get Things Done!</Title>
+
         <Form addTask={addTask} />
-        {todos.map((task) =>
+        
+        <SearchForm handleChange={handleChange}/>
+
+        {filteredTasks.map((task) =>
           task.isEditing ? (
             <EditForm
+              key={task.id}
               id={task.id}
               description={task.description}
               editTask={editTask}
             />
           ) : (
             <Task
+              key={task.id}
               id={task.id}
               description={task.description}
               completed={task.completed}

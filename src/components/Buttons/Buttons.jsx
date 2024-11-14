@@ -26,8 +26,8 @@ const TrashButton = (props) => {
   return (
     <button
       className="text-gray-50 mx-2"
-    //   onClick={() => props.deleteTask(props.id)}
-    onClick={props.onClick}
+      onClick={() => props.deleteTask(props.id)}
+    // onClick={props.onClick}
     >
       <FaTrash />
     </button>
