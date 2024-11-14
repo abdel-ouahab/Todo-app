@@ -1,30 +1,45 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Container, Title, Form, Task, EditForm, Button, SearchForm } from "./components/index";
-import { FaSearch } from "react-icons/fa";
+import {
+  Container,
+  Title,
+  Form,
+  Task,
+  EditForm,
+  SearchForm,
+  Button,
+} from "./components/index";
 import { v4 as uuidv4 } from "uuid";
 uuidv4();
 
+
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [filteredTasks, setFilteredTasks] = useState([])
-  const [inputValue, setInputValue] = useState('')
+  const [todos, setTodos] = useState(() => {
+    const localData = localStorage.getItem('todos')
+    return localData ? JSON.parse(localData) : []
+  });
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-
-  const handleChange = (e) => {
-    setInputValue(e.target.value)
-  }
 
   useEffect(() => {
-    setFilteredTasks(todos)
+    localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   useEffect(() => {
-    const filter = todos.filter(
-      task => task.description.toLowerCase().includes(inputValue)
-    )
-    setFilteredTasks(filter)
-  }, [inputValue])
+    setFilteredTasks(todos);
+  }, [todos]);
+
+  useEffect(() => {
+    const filter = todos.filter((task) =>
+      task.description.toLowerCase().includes(inputValue)
+    );
+    setFilteredTasks(filter);
+  }, [inputValue]);
 
   const addTask = (todo) => {
     setTodos([
