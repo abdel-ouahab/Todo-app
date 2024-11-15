@@ -26,8 +26,9 @@ const SearchForm = (props) => {
         <div className="flex flex-row mb-7 justify-center">
           <Button
             title="Search"
-            varaint="Search"
+            varaint="primary"
             icon={<FaSearch />}
+            classname={"rounded p-2"}
             onClick={() => setSearch((prevSearch) => !prevSearch)}
           />
         </div>

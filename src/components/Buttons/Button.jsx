@@ -1,20 +1,14 @@
-
-function Button({ icon, title, varaint, onClick }) {
+function Button({ icon, title, varaint, onClick, classname }) {
     const variants = {
       primary: {
         classname:
-          "flex items-center justify-center gap-4 text-gray-100  bg-violet-500 w-28 hover:text-violet-950 hover:bg-gray-100",
+          " text-gray-100  bg-violet-500 w-28 hover:text-violet-950 hover:bg-gray-100",
         type: "submit",
       },
       secondary: {
-        classname: "text-gray-50 mx-2",
+        classname: "text-gray-50 ",
         type: "",
-      },
-      Search: {
-        classname:
-          "flex items-center justify-center gap-4 rounded p-2 text-gray-100 text-center bg-violet-500 w-28 hover:text-violet-950 hover:bg-gray-100",
-        type: "",
-      },
+      }
     };
   
     const selectedVaraint = variants[varaint].classname;
@@ -23,7 +17,7 @@ function Button({ icon, title, varaint, onClick }) {
     return (
       <button
         type={typeVaraint}
-        className={`${selectedVaraint}`}
+        className={`flex items-center justify-center gap-4 ${selectedVaraint} ${classname}`}
         onClick={onClick}
       >
         <p>{title && title}</p>

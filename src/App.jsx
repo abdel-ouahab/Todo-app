@@ -25,7 +25,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
-
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
