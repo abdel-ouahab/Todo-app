@@ -1,5 +1,7 @@
 import { Button } from "../index";
 import { useState } from "react";
+import { FaSearch, FaRegWindowClose } from "react-icons/fa";
+
 
 const SearchForm = (props) => {
   const [search, setSearch] = useState(false);
@@ -16,6 +18,7 @@ const SearchForm = (props) => {
           <Button
             title="Close"
             varaint="primary"
+            icon={<FaRegWindowClose />}
             onClick={() => setSearch((prevSearch) => !prevSearch)}
           />
         </div>
@@ -23,7 +26,9 @@ const SearchForm = (props) => {
         <div className="flex flex-row mb-7 justify-center">
           <Button
             title="Search"
-            varaint="Search"
+            varaint="primary"
+            icon={<FaSearch />}
+            classname={"rounded p-2"}
             onClick={() => setSearch((prevSearch) => !prevSearch)}
           />
         </div>

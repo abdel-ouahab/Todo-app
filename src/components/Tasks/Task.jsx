@@ -14,7 +14,7 @@ const Task = (props) => {
         {props.description}
       </p>
 
-      <div>
+      <div className="flex ">
         <Button  varaint="secondary" icon={props.completed ? (<FaWindowClose />) : (<FaCheck />)} onClick={() => props.completedTask(props.id)}/>
         <Button  varaint="secondary" icon={<FaEdit />}  onClick={() => props.editTask(props.id)}/>
         <Button  varaint="secondary" icon={<FaTrash />} onClick={() => props.deleteTask(props.id)}/>
