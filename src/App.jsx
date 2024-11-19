@@ -11,13 +11,20 @@ import {
 } from "./components/index";
 import { v4 as uuidv4 } from "uuid";
 uuidv4();
-import { CiSearch } from "react-icons/ci";
+
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const localData = localStorage.getItem('todos')
+    return localData ? JSON.parse(localData) : []
+  });
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -79,7 +86,6 @@ function App() {
         <Form addTask={addTask} />
 
         <SearchForm handleChange={handleChange} />
-        <Button title="Submit" icon={<CiSearch />} varaint="primary" />
 
         {filteredTasks.map((task) =>
           task.isEditing ? (
