@@ -151,7 +151,7 @@ function Todo() {
           <div className="flex  justify-between text-gray-300 text-x mb-1">
             <p>
               {`You have ${data?.length || 0} tasks`}
-            </p>
+            </p> 
             <p>
               {`completed tasks : ${data?.filter(task => task.completed).length || 0}`}
             </p>
