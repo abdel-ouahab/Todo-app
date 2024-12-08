@@ -1,28 +1,25 @@
-import { Button} from "../index";
+import { Button, Input } from "../index";
 import { useState } from "react";
 
 const Form = ({ addTask }) => {
     const [description, setDescription] = useState("");
+    const [userId, setUserId] = useState(localStorage.getItem('userID'));
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(description);
-        addTask(description);
+        addTask(description , userId);
         setDescription("");
     };
-
     return (
         <>
             <form className="flex flex-row mb-7" onSubmit={handleSubmit}>
-                <input
-                    type="text"
+                <Input 
                     placeholder="What is the task today?"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="sm:w-96 border-2 border-violet-500 bg-violet-950 p-2 placeholder-slate-300 text-gray-100  focus:outline-none focus:border-violet-500"
-                    required
+                    classname={""}
                 />
-                <Button title= "Add Task" varaint="primary" />
+                <Button title= "Add Task" variant="primary" />
             </form>
         </>
     );

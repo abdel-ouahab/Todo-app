@@ -1,4 +1,4 @@
-function Button({ icon, title, varaint, onClick, classname }) {
+function Button({ icon, title, variant, onClick, classname=" " }) {
     const variants = {
       primary: {
         classname:
@@ -10,14 +10,12 @@ function Button({ icon, title, varaint, onClick, classname }) {
         type: "",
       }
     };
-  
-    const selectedVaraint = variants[varaint].classname;
-    const typeVaraint = variants[varaint].type;
-  
+    const selectedVariant = variants[variant] ? variants[variant].classname : variants['secondary'].classname;
+    const typeVariant = variants[variant] ? variants[variant].type : variants['secondary'].type;
     return (
       <button
-        type={typeVaraint}
-        className={`flex items-center justify-center gap-4 ${selectedVaraint} ${classname}`}
+        type={typeVariant}
+        className={`flex items-center justify-center gap-4 ${selectedVariant} ${classname}`}
         onClick={onClick}
       >
         <p>{title && title}</p>
