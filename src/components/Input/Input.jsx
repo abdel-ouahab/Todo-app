@@ -9,7 +9,7 @@ const Input = ({inputref, value, onChange, placeholder, type = "text", classname
         value={value}
         onChange={onChange}
         autoComplete="off"
-        required
+        
       />
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>

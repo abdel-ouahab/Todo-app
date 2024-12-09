@@ -1,5 +1,5 @@
 import  Axios  from 'axios';
-import * as yup from 'yup';
+import  {userSchema} from './Schema'
 import { useState } from 'react';
 import {useCookies} from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -12,11 +12,6 @@ function Login() {
   const [responseMessage, setResponseMessage] = useState("");
   const [, setCookies] = useCookies("access_token")
   const navigate = useNavigate();
-
-  const userSchema = yup.object().shape({
-    email: yup.string().email("Invalid email").required("Email is required"),
-    password: yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
-  });
 
   const { register , handleSubmit, formState: { errors },} = useForm({
     resolver: yupResolver(userSchema),
